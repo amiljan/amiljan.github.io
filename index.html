@@ -11,9 +11,13 @@
     }
   </style>
   <script>
-    fetch("https://raw.githubusercontent.com/amiljan/affliction/master/party.json")
-      .then(response => response.json())
-      .then(data => {
+    let oldData = null;
+    function loadData() {
+  fetch("https://raw.githubusercontent.com/amiljan/affliction/master/party.json")
+    .then(response => response.json())
+    .then(data => {
+      if (oldData !== JSON.stringify(data)) {
+        oldData = JSON.stringify(data);
         let characters = [];
         let table = "<select id='characterSelect' onchange='filter()'><option value=''>All</option>";
         for (const character in data) {
@@ -34,25 +38,28 @@
         }
         table += "</table>";
         document.getElementById("table").innerHTML = table;
-      });
-
-    function filter() {
-      let characterSelect = document.getElementById("characterSelect");
-      let selectedCharacter = characterSelect.options[characterSelect.selectedIndex].value;
-      let rows = document.querySelectorAll("#dataTable tr");
-      for (const row of rows) {
-        if (selectedCharacter === "") {
-          row.style.display = "";
-        } else if (row.classList.contains(selectedCharacter)) {
-          row.style.display = "";
-        } else {
-          row.style.display = "none";
-        }
       }
+    });
+}
+
+function filter() {
+  let characterSelect = document.getElementById("characterSelect");
+  let selectedCharacter = characterSelect.options[characterSelect.selectedIndex].value;
+  let rows = document.querySelectorAll("#dataTable tr");
+  for (const row of rows) {
+    if (selectedCharacter === "") {
+      row.style.display = "";
+    } else if (row.classList.contains(selectedCharacter)) {
+      row.style.display = "";
+    } else {
+      row.style.display = "none";
     }
-  </script>
+  }
+}
+</script>
 </head>
 <body>
   <div id="table"></div>
+  <button onclick="loadData()">Reload Data</button>
 </body>
 </html>
