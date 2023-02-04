@@ -1,80 +1,58 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-      }
-
-      th,
-      td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-      }
-
-      .red {
-        background-color: #ff6666;
-      }
-      .yellow {
-        background-color: #ffff66;
-      }
-      .green {
-        background-color: #66ff66;
-      }
-    </style>
-  </head>
-  <body>
-    <script>
-      function loadJSON(callback) {
-        var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-        xobj.open("GET", "https://raw.githubusercontent.com/amiljan/affliction/master/party.json", true);
-        xobj.onreadystatechange = function() {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(xobj.responseText);
-          }
-        };
-        xobj.send(null);
-      }
-
-      function createTable(name, data) {
-        var table = document.createElement("table");
-        var headerRow = table.insertRow();
-        headerRow.insertCell().innerHTML = "Status";
-        headerRow.insertCell().innerHTML = "Value";
-
-        for (var key in data) {
-          var row = table.insertRow();
-          var statusCell = row.insertCell();
-          statusCell.innerHTML = key;
-
-          var valueCell = row.insertCell();
-          valueCell.innerHTML = data[key];
-
-          if (data[key] == 0) {
-            row.classList.add("green");
-          } else if (data[key] > 0 && data[key] < 5) {
-            row.classList.add("yellow");
-          } else {
-            row.classList.add("red");
+<head>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+  </style>
+  <script>
+    fetch("https://raw.githubusercontent.com/amiljan/affliction/master/party.json")
+      .then(response => response.json())
+      .then(data => {
+        let characters = [];
+        let table = "<select id='characterSelect' onchange='filter()'><option value=''>All</option>";
+        for (const character in data) {
+          characters.push(character);
+          table += "<option value='" + character + "'>" + character + "</option>";
+        }
+        table += "</select>";
+        table += "<table id='dataTable'><tr><th>Character</th><th>Affliction</th><th>Value</th><th>Effect</th></tr>";
+        for (const character of characters) {
+          for (const affliction in data[character]) {
+            table += "<tr class='" + character + "'>";
+            table += "<td>" + character + "</td>";
+            table += "<td>" + affliction + "</td>";
+            table += "<td>" + data[character][affliction].value + "</td>";
+            table += "<td>" + data[character][affliction].effect + "</td>";
+            table += "</tr>";
           }
         }
-
-        var heading = document.createElement("h2");
-        heading.innerHTML = name;
-
-        document.body.appendChild(heading);
-        document.body.appendChild(table);
-      }
-
-      loadJSON(function(response) {
-        var data = JSON.parse(response);
-        for (var name in data) {
-          createTable(name, data[name]);
-        }
+        table += "</table>";
+        document.getElementById("table").innerHTML = table;
       });
-    </script>
-  </body>
+
+    function filter() {
+      let characterSelect = document.getElementById("characterSelect");
+      let selectedCharacter = characterSelect.options[characterSelect.selectedIndex].value;
+      let rows = document.querySelectorAll("#dataTable tr");
+      for (const row of rows) {
+        if (selectedCharacter === "") {
+          row.style.display = "";
+        } else if (row.classList.contains(selectedCharacter)) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="table"></div>
+</body>
 </html>
