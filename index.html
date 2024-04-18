@@ -1,45 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Client for ISS API</title>
-    <!--Including jQuery from CDN-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <head>
+    <title>Docubot</title>
+  </head>
+  <body>
+    <header>
+      <select id="dropdown">
+        <option value="Spectra">Spectra</option>
+        <option value="A1000">A1000</option>
+        <option value="TiCloud">TiCloud</option>
+      </select>
+    </header>
+    
+    <section>
+      <label for="question">Question:</label>
+      <input type="text" id="question" name="question" />
+      <button id="askButton" onclick="generateAnswer()">Ask</button>
+    </section>
+    
+    <section>
+      <div id="answerBox"></div>
+    </section>
+    
     <script>
-    //function to call the API
-    function callApi(){
-        $.ajax({
-            url: 'https://cors-anywhere.herokuapp.com/http://api.open-notify.org/iss-now.json',
-            type: 'GET',
-            success: function(res) {
-                $('#responseBox').html(JSON.stringify(res));
-                $('#textField').val('Did you mean to ask Where is the ISS?');
-            },
-            error: function(err){
-                $('#responseBox').html('Error: ' + err);
-            }
-        });
-    }
-
-    $(document).ready(function() {
-        $('#askButton').on('click', callApi);
-    });
+        function generateAnswer() {
+          let dropdownValue = document.getElementById("dropdown").value;
+          let question = document.getElementById("question").value;
+          let answerBox = document.getElementById("answerBox");
+          answerBox.innerHTML = `You asked ${question} about ${dropdownValue}`;
+        }
     </script>
-    <style>
-    #responseBox {
-        border: 1px solid black;
-        padding: 10px;
-        margin-top: 10px;
-        width: 50%;
-        word-wrap: break-word;
-    }
-    </style>
-</head>
-<body>
-    <div>
-        <label for="textField">Question:</label>
-        <input type="text" id="textField" />
-        <button id="askButton">Ask</button>
-    </div>
-    <div id="responseBox"></div>
-</body>
+  </body>
 </html>
