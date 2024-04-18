@@ -1,65 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
+    <title>Client for ISS API</title>
+    <!--Including jQuery from CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    //function to call the API
+    function callApi(){
+        $.ajax({
+            url: 'http://api.open-notify.org/iss-now.json',
+            type: 'GET',
+            success: function(res) {
+                $('#responseBox').html(JSON.stringify(res));
+                $('#textField').val('Did you mean to ask Where is the ISS?');
+            },
+            error: function(err){
+                $('#responseBox').html('Error: ' + err);
+            }
+        });
     }
-    th, td {
-      padding: 8px;
-    }
-  </style>
-  <script>
-    let oldData = null;
-    function loadData() {
-  fetch("https://raw.githubusercontent.com/amiljan/affliction/master/party.json")
-    .then(response => response.json())
-    .then(data => {
-      if (oldData !== JSON.stringify(data)) {
-        oldData = JSON.stringify(data);
-        let characters = [];
-        let table = "<select id='characterSelect' onchange='filter()'><option value=''>All</option>";
-        for (const character in data) {
-          characters.push(character);
-          table += "<option value='" + character + "'>" + character + "</option>";
-        }
-        table += "</select>";
-        table += "<table id='dataTable'><tr><th>Character</th><th>Affliction</th><th>Value</th><th>Effect</th></tr>";
-        for (const character of characters) {
-          for (const affliction in data[character]) {
-            table += "<tr class='" + character + "'>";
-            table += "<td>" + character + "</td>";
-            table += "<td>" + affliction + "</td>";
-            table += "<td>" + data[character][affliction].value + "</td>";
-            table += "<td>" + data[character][affliction].effect + "</td>";
-            table += "</tr>";
-          }
-        }
-        table += "</table>";
-        document.getElementById("table").innerHTML = table;
-      }
-    });
-}
 
-function filter() {
-  let characterSelect = document.getElementById("characterSelect");
-  let selectedCharacter = characterSelect.options[characterSelect.selectedIndex].value;
-  let rows = document.querySelectorAll("#dataTable tr");
-  for (const row of rows) {
-    if (selectedCharacter === "") {
-      row.style.display = "";
-    } else if (row.classList.contains(selectedCharacter)) {
-      row.style.display = "";
-    } else {
-      row.style.display = "none";
+    $(document).ready(function() {
+        $('#askButton').on('click', callApi);
+    });
+    </script>
+    <style>
+    #responseBox {
+        border: 1px solid black;
+        padding: 10px;
+        margin-top: 10px;
+        width: 50%;
+        word-wrap: break-word;
     }
-  }
-}
-</script>
+    </style>
 </head>
 <body>
-  <div id="table"></div>
-  <button onclick="loadData()">Reload Data</button>
+    <div>
+        <label for="textField">Question:</label>
+        <input type="text" id="textField" />
+        <button id="askButton">Ask</button>
+    </div>
+    <div id="responseBox"></div>
 </body>
 </html>
