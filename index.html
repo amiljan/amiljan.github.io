@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Docubot</title>
-  </head>
-  <body>
-    <header>
-      <select id="dropdown">
-        <option value="Spectra">Spectra</option>
-        <option value="A1000">A1000</option>
-        <option value="TiCloud">TiCloud</option>
-      </select>
-    </header>
-    
-    <section>
-      <label for="question">Question:</label>
-      <input type="text" id="question" name="question" />
-      <button id="askButton" onclick="generateAnswer()">Ask</button>
-    </section>
-    
-    <section>
-      <div id="answerBox"></div>
-    </section>
-    
-    <script>
-        function generateAnswer() {
-          let dropdownValue = document.getElementById("dropdown").value;
-          let question = document.getElementById("question").value;
-          let answerBox = document.getElementById("answerBox");
-          answerBox.innerHTML = `You asked ${question} about ${dropdownValue}`;
-        }
-    </script>
-  </body>
+<head>
+    <title>A guide to Potions and Plantlife</title>
+</head>
+<body>
+    <h1>A guide to Potions and Plantlife</h1>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+        <div>
+            <img src="https://github.com/amiljan/amiljan.github.io/blob/master/images/harvest.jpg?raw=true" alt="Harvest" style="width: 300px; height: 300px;">
+            <p><a href="https://github.com/amiljan/amiljan.github.io/blob/master/harvest.html">Harvest</a></p>
+        </div>
+        <div>
+            <img src="https://github.com/amiljan/amiljan.github.io/blob/master/images/eat.jpg?raw=true" alt="Eat" style="width: 300px; height: 300px;">
+            <p><a href="https://github.com/amiljan/amiljan.github.io/blob/master/fun_guy.html">Eat</a></p>
+        </div>
+        <div>
+            <img src="https://github.com/amiljan/amiljan.github.io/blob/master/images/mix.jpg?raw=true" alt="Alchemy" style="width: 300px; height: 300px;">
+            <p><a href="https://github.com/amiljan/amiljan.github.io/blob/master/mix.html">Alchemy</a></p>
+        </div>
+    </div>
+</body>
 </html>
