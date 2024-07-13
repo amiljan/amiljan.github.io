@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Fun Guy</title>
+</head>
+<body>
+    <select id="rarity">
+        <option value="common">Common</option>
+        <option value="uncommon">Uncommon</option>
+    </select>
+    <button onclick="eatUp()">Eat UP!</button>
+    <p id="response"></p>
+
+    <script>
+        function eatUp() {
+            var rarity = document.getElementById("rarity").value;
+            var request = new XMLHttpRequest();
+            var url = "https://raw.githubusercontent.com/amiljan/amiljan.github.io/" +
+                "master/m_" + rarity + ".txt";
+            request.open("GET", url, true);
+            request.onreadystatechange = function() {
+                if (request.readyState === 4 && request.status === 200) {
+                    var lines = request.responseText.split("\n");
+                    var index = Math.floor(Math.random() * lines.length);
+                    var line = lines[index];
+                    document.getElementById("response").innerHTML = line;
+                }
+            }
+            request.send();
+        }
+    </script>
+</body>
+</html>
