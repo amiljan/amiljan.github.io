@@ -1,0 +1,28 @@
+Grants +2 to Strength for 1 turn
+Grants +2 to Dexterity for 1 turn
+Grants +2 to Constitution for 1 turn
+Grants +2 to Intelligence for 1 turn
+Grants +2 to Wisdom for 1 turn
+Grants +2 to Charisma for 1 turn
+Can see into the Aetherial plane for 1 hour
+Jump distance is twice max movement speed for 1 hour 
+Instantly teleports you 20ft into the air 
+Gain the effects of haste for 1 turn
+Must instantly breathe 30 ft cone of fire (6d6, Dex DC 15)
+Must instantly breathe 30 ft cone of cold (8d4,Dex DC 15)
+Must instantly breathe 30 ft cone of poison (4d8,Dex DC 15)
+Must instantly breathe 60 ft line of lightning (6d12,Dex DC 15)
+Movement is doubled, can only more in a random direction (1d4, N,S,E or W)
+You become Tiny for 1 minute
+You become Huge for 1 minute
+You can detect everyone’s thoughts for 1 minute
+Polymorph into a fly for 1 minute
+Polymorph into a tree for 1 minute
+For one day, eating a snack works like a short rest, eating a full meal acts like a long rest
+For one day, you can speak with animals
+For one day, you can speak with the dead
+For one day, you can speak any language
+For 1 minute all spellcasitng requires no material components
+For 1 minute all spellcasitng works as if cast using the Subtle Metamagic ability
+Permanently gain advantage to perception when trying to find a source of cooked food (the advantages stack)
+Summon a fay creature, the creature is chose at random, it is drawn to your location against it’s will and with no idea how or why it’s here
