@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+        .form-field {
+            margin-bottom: 15px;
+        }
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-field select, .form-field input {
+            width: 100%;
+            padding: 8px;
+        }
+        #generate {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Alchemy</h1>
+        <div class="form-field">
+            <label for="damageType">Pick Damage Type:</label>
+            <select id="damageType">
+                <option value="1">Fire</option>
+                <option value="2">Cold</option>
+                <option value="3">Lightning</option>
+                <option value="4">Acid</option>
+                <option value="5">Poison</option>
+                <option value="6">Thunder</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="damageDie">Pick Damage Die:</label>
+            <select id="damageDie">
+                <option value="1">d4</option>
+                <option value="2">d6</option>
+                <option value="3">d8</option>
+                <option value="4">d10</option>
+                <option value="5">d12</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="numDice">Pick Number of Dice:</label>
+            <input type="number" id="numDice" min="1" max="20" value="1">
+        </div>
+        <div class="form-field">
+            <label for="secondaryEffect">Pick Secondary Effect:</label>
+            <select id="secondaryEffect">
+                <option value="1">Blind</option>
+                <option value="2">Slow</option>
+                <option value="3">Weaken</option>
+                <option value="4">Dizzy</option>
+                <option value="5">Stupify</option>
+                <option value="6">Mark</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="effectDuration">Pick Effect Duration:</label>
+            <select id="effectDuration">
+                <option value="1">1 turn</option>
+                <option value="2">1d4 turns</option>
+                <option value="3">1d6 turns</option>
+                <option value="4">1d8 turns</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="criticalEffect">Pick Critical Effect:</label>
+            <select id="criticalEffect">
+                <option value="1">Paralyze</option>
+                <option value="2">Make Vulnerable</option>
+                <option value="3">Hypnotize</option>
+                <option value="4">Confuse</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="area">Pick Area:</label>
+            <select id="area">
+                <option value="1">5ft blast</option>
+                <option value="2">10ft blast</option>
+                <option value="3">15ft blast</option>
+                <option value="4">20ft blast</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="saveDC">Pick Save DC:</label>
+            <input type="number" id="saveDC" min="10" max="24" value="10">
+        </div>
+        <div class="form-field">
+            <label for="alchemyType">Choose Alchemy Type:</label>
+            <select id="alchemyType">
+                <option value="1">Instant</option>
+                <option value="2">Quick</option>
+                <option value="3">Long</option>
+            </select>
+        </div>
+        <button id="generate">Generate</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('generate').addEventListener('click', function() {
+            const a = 'a' + document.getElementById('damageType').value;
+            const b = 'b' + document.getElementById('damageDie').value;
+            const c = 'c' + document.getElementById('numDice').value;
+            const d = 'd' + document.getElementById('secondaryEffect').value;
+            const e = 'e' + document.getElementById('effectDuration').value;
+            const f = 'f' + document.getElementById('criticalEffect').value;
+            const g = 'g' + document.getElementById('area').value;
+            const h = 'h' + document.getElementById('saveDC').value;
+            const i = 'i' + document.getElementById('alchemyType').value;
+
+            const resultString = a + b + c + d + e + f + g + h + i;
+            document.getElementById('result').textContent = resultString;
+        });
+    </script>
+</body>
+</html>
