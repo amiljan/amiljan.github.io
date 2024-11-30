@@ -1,32 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>A guide to Potions and Plantlife</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Log</title>
     <style>
         body {
-            background-image: url('https://github.com/amiljan/amiljan.github.io/blob/master/images/background.jpg?raw=true');
-            background-repeat: no-repeat;
-            background-attachment: fixed;  
-            background-size: cover;
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 5px 0;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>A guide to Potions and Plantlife</h1>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-        <div>
-            <img src="https://github.com/amiljan/amiljan.github.io/blob/master/images/harvest.jpg?raw=true" alt="Harvest" style="width: 300px; height: 300px;">
-            <p><a href="https://amiljan.github.io/harvest.html">Harvest</a></p>
-        </div>
-        <div>
-            <img src="https://github.com/amiljan/amiljan.github.io/blob/master/images/eat.jpg?raw=true" alt="Eat" style="width: 300px; height: 300px;">
-            <p><a href="https://amiljan.github.io/fun_guy.html">Eat</a></p>
-        </div>
-        <div>
-            <img src="https://github.com/amiljan/amiljan.github.io/blob/master/images/mix.jpg?raw=true" alt="Alchemy" style="width: 300px; height: 300px;">
-            <p><a href="https://amiljan.github.io/mix.html">Alchemy</a></p>
-        </div>
-    </div>
+    <h1>Mission Log</h1>
+
+    <h2>Ongoing</h2>
+    <ul>
+        <li><input type="checkbox"> The War Forge: Ispod Eric’s Peak-a u Blackcap Planinama, Sjeverno od sela Rocfeather nalazi se ulaz u War Forge.</li>
+        <li><input type="checkbox"> By order of the Mayor: Gradonačelnik vam dostavlja opremu koju budete morali ugraditi u War Forge kada bude claiman.</li>
+        <li><input type="checkbox"> Created Equal: Morgan Vaal i ostatak non humana, moli vas da uzmete sa sobom Warforged-a Scribe of Treaties kako bi on mogao preuzeti mjesto svog stvaranja.</li>
+        <li><input type="checkbox"> REDACTED: For Družinec eyes only.</li>
+        <li><input type="checkbox"> The Man with the Mythril gun: našli ste lokaciju legendarnog elfovskog gunsmitha. Živi trenutno iznad male radione u selu Rocfeather.</li>
+    </ul>
+
+    <h2>Major Quests</h2>
+    <ul>
+        <li><input type="checkbox"> Strikebreaker:</li>
+        <ul>
+            <li><input type="checkbox"> Štrajkovi i prosvjedi paraliziraju Sharn. Vođe radničkog pokreta osuđene su na smrt i kazna bude izvršena noć pred izbore.</li>
+            <li><input type="checkbox"> Radnički pokret je kriminalan...</li>
+            <li><input type="checkbox"> Vi se ne bavite politikom...</li>
+            <li><input type="checkbox"> Watch je dugo bio kriminalan...</li>
+            <li><input type="checkbox"> Narodu se nikada nebude dozvolilo vladati...</li>
+        </ul>
+        <li><input type="checkbox"> Pandamonium:</li>
+        <ul>
+            <li><input type="checkbox"> Potres koji je pogodio Sharn otvorio je fisure...</li>
+            <li><input type="checkbox"> U konačnici nije bitno tko je gasio wardove...</li>
+            <li><input type="checkbox"> Prošlo je vrijeme priča za laku noć...</li>
+        </ul>
+        <li><input type="checkbox"> Of Rats and Men:</li>
+        <ul>
+            <li><input type="checkbox"> Ikkit Claw je negdje u ruševinama ispod Atrax towera...</li>
+            <li><input type="checkbox"> Nađite i uhapsite ga.</li>
+            <li><input type="checkbox"> Ispuni assassinatian contract.</li>
+        </ul>
+    </ul>
+
+    <h2>Personal Quests</h2>
+    <ul>
+        <li><input type="checkbox"> The Daddy: Aruman je nezadovoljan kao duh...</li>
+        <li><input type="checkbox"> Peaceforged: TSIRI predstavlja nešto novo...</li>
+        <li><input type="checkbox"> Hello to arms: Dwarfovi...</li>
+        <li><input type="checkbox"> Forged for war: Nađi nekoga da ti složi upgrade paket...</li>
+        <li><input type="checkbox"> Oh Brother where art thou:</li>
+        <ul>
+            <li><input type="checkbox"> Posjeti Doktora Skarsnika da ti vrati sjećanja.</li>
+            <li><input type="checkbox"> Dobi pristup u Blackrock zatvor i pričaj sa zatvorenikom...</li>
+            <li><input type="checkbox"> Prihvati da ti brata više nema...</li>
+            <li><input type="checkbox"> Vještica koja ti je brata pretvorila u miša...</li>
+        </ul>
+    </ul>
+
+    <h2>Minor Quests</h2>
+    <ul>
+        <li><input type="checkbox"> My favorite spot on the Citadel: Dajte potporu nekoj stranki prije izbora.</li>
+        <li><input type="checkbox"> UtaKmica: The Giant Batman je u sklopu istrage...</li>
+        <li><input type="checkbox"> Cyra Reborn: Vaši kontakti iz djece Cyre javljaju da Kralj zove u audijenciju.</li>
+        <li><input type="checkbox"> Cataclysm: Ambasador Techless izgubio je još jednu mačku...</li>
+        <li><input type="checkbox"> Missing in Action: nekoliko potpuno objašnjivih birokratskih gluposti...</li>
+        <li><input type="checkbox"> Your gun and your badge: istraga u neautoriziranu uporabu sile...</li>
+        <li><input type="checkbox"> Grampas Armor: Quartermaster Grumnir radi na dedekovom oklopu...</li>
+        <li><input type="checkbox"> Rataliation: Tarquin i zarobljeni Rat Ogre zajedno rade na svom deprogramiranju...</li>
+    </ul>
 </body>
 </html>
